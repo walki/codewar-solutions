@@ -23,16 +23,14 @@ public static class Kata
 {
   public static int TrailingZeros(int n)
   {
-    int divBy5 = 0;
-    for (int i = 1; i <= n; i++)
+    int currPowerOf5 = 5;
+    int zeros = 0;
+    
+    while (currPowerOf5 <= n)
     {
-      int temp = i;
-      while (temp % 5 == 0)
-      {
-        divBy5++;
-        temp /= 5;
-      }
+      zeros += n / currPowerOf5;
+      currPowerOf5 *= 5;
     }
-    return divBy5;
+    return zeros;
   }
 }

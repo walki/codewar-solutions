@@ -6,6 +6,9 @@ public class StockList {
     public static string stockSummary(String[] lstOfArt, String[] lstOf1stLetter)
     {
       string result = "";
+      
+      if (lstOfArt.Length == 0 || lstOf1stLetter.Length == 0) return result;
+      
       Dictionary<string, int> stock = new Dictionary<string, int>();
       foreach ( string item in lstOfArt)
       {
