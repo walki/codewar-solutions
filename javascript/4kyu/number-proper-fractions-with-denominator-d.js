@@ -1,12 +1,20 @@
 function properFractions(d){
     //console.log('d:' + d);
-    let nonCommon = Array.from(new Array(d-1), (x,i) => i + 1)
-      .filter( val => {
-        console.log("val: " + val + " d: " + d);
-        return hcf( val, d ) === 1;
-      })
-    console.log(nonCommon);  
-    return nonCommon.length;
+    let nonCommon = Array.from(new Array(d), (x,i) => i )
+    
+    for(let i = 1; i < nonCommon.length; ++i){
+      if (nonCommon[i] !== 0 && hcf( nonCommon[i], d) !== 1)
+      {
+        let j = 1;
+        while (j*i < d){
+          nonCommon[j*i] = 0;
+          j++;
+        }
+      }
+    }
+      
+    //console.log(nonCommon);  
+    return nonCommon.filter( n => n != 0).length;
   }
   
   
@@ -21,106 +29,3 @@ function properFractions(d){
   }
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  let MAXN = 16637345 ;
-  
-  let spf = [ 0 ];
-  function sieve()
-  {
-    spf.push( 1 );
-    for (let i = 2; i < MAXN; ++i){
-      spf.push(i);
-    }
-    
-    for(let i = 4; i < MAXN; i+=2){
-      spf[i] = 2;
-    }
-    
-    for(let i =3; i*i < MAXN; ++i){
-      if (spf[i] === i){
-        for(let j=i*i; j<MAXN; j+=i){
-          if(spf[j] == j)
-            spf[j] = i;
-        }
-      }
-    }
-  }
-  
-  function getFactorization( x ) {
-    
-    let ret = [];
-    while ( x != 1){
-      ret.push(spf[x]);
-      x = Math.floor( x / spf[x]);
-    }
-    return ret;
-  }
-  
-  //sieve();
-  
-  function properFractionsPrimeSieve(d){
-    if (d > MAXN) return d-1;
-    let count = 0;
-  
-    let factors = getFactorization(d);
-    if (factors.length === 0)
-      count = 0;
-    else if (factors.length === 1)
-      count = d-1;
-    else{
-      //console.log("d:" + d);
-      let nonCommon = Array.from(new Array(d-1), (x,i) => i + 1)
-          .filter( val => {
-            let commonFactor = false;
-            factors.forEach( fact => {
-              if (val % fact === 0)
-              {
-                commonFactor = true;
-              }
-            });
-            return !commonFactor;
-          });
-      //console.log(nonCommon);
-      count = nonCommon.length;
-    }
-     
-  
-    return count;
-  }
-  
-  function properFractionsRecursiveGCD(d){
-    let proper = 0;
-    for (let n = 1; n < d; ++n){
-      if (gcd(n,d) === 1) {
-        proper++;
-      }
-    }
-    
-    return proper;
-      
-    function gcd(a, b) {
-      //console.log(`${a} : ${b}`);
-      if (a === b) {
-        return a;
-      }
-      else if (a >= b){
-        return gcd(a-b, b);
-      }
-      else {
-        return gcd(a, b-a);
-      }
-    }
-  }
