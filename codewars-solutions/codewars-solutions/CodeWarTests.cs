@@ -9,6 +9,7 @@ namespace codewars_solutions
         {
         }
 
+        [Ignore(reason:"Completed")]
         [Test]
         [TestCase(0, 0)]
         [TestCase(1, 1)]
@@ -23,6 +24,7 @@ namespace codewars_solutions
             Assert.AreEqual(fib, expected);
         }
 
+        [Ignore(reason: "Completed")]
         [Test]
         [TestCase("12:30 am", new bool[] {false, false, true})]
         [TestCase("12:02 pm", new bool[] {false, true, false})]
@@ -38,6 +40,22 @@ namespace codewars_solutions
         }
 
 
+        //Convert number to reversed array of digits
+        //Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+        [Ignore(reason: "Completed")]
+        [Test]
+        [TestCase(0, new int[] { 0 })]
+        [TestCase(1, new int[] { 1 })]
+        [TestCase(11, new int[] { 1, 1 })]
+        [TestCase(10, new int[] { 0, 1 })]
+        [TestCase(100, new int[] { 0, 0, 1 })]
+        [TestCase(342597, new int[] { 7, 9, 5, 2, 4, 3 })]
+        public void NumberToReverseArrayOfDigits(int numToDigitize, int[] expected)
+        {
+            var digitizer = new Digitizer();
+            var actual = digitizer.Digitize(numToDigitize);
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }
