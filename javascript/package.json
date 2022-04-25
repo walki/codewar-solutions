@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-v": "jest --verbose" 
   },
   "devDependencies": {
     "chai": "^4.3.6",
