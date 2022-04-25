@@ -12,3 +12,6 @@ def _test_turn_with_compass():
     assert direction("E", 180) == "W"
     assert direction("W", 180) == "E"
     assert direction("NE", -90) == "NW"
+ 
+def test_rule30():
+    assert rule30([1], 1) == [1,1,1]

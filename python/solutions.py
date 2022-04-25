@@ -12,3 +12,7 @@ def direction(facing, turn):
     dir = deg_to_comp[end_deg % 360]
 
     return dir
+
+
+def rule30(curr, n):
+    return [1,1,1]
