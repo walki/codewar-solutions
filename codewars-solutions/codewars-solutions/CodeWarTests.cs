@@ -57,6 +57,54 @@ namespace codewars_solutions
             Assert.AreEqual(expected, actual);
         }
 
+        [Ignore(reason: "Completed")]
+        [Test]
+        [TestCase("", "")]
+        [TestCase("a", "a")]
+        [TestCase("1a", "a")]
+        [TestCase("1a", "a")]
+        [TestCase("1a1", "a")]
+        [TestCase("b2", "b")]
+        [TestCase("This looks5 grea8t!", "This looks great!")]
+        public void StringCleaningTest(string stringToClean, string dirty)
+        {
+            string clean = StringCleaner.StringClean(stringToClean);
+            Assert.That(clean, Is.EqualTo(dirty));
+        }
+
+
+        // Decimal to Factorial and Back
+        [Ignore(reason: "Completed")]
+        [Test]
+        [TestCase("", 0)]
+        [TestCase("0", 0)]
+        [TestCase("10", 1)]
+        [TestCase("210", 5)]
+        [TestCase("110", 3)]
+        [TestCase("3110", 21)]
+        [TestCase("341010", 463)]
+        public void FactorialBaseToDecimalTest(string fact, long expected)
+        {
+            long actual = Dec2Fact.factString2Dec(fact);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Ignore(reason: "Completed")]
+        [Test]
+        [TestCase(0, "0")]
+        [TestCase(1, "10")]
+        [TestCase(2, "100")]
+        [TestCase(3, "110")]
+        [TestCase(4, "200")]
+        [TestCase(5, "210")]
+        [TestCase(6, "1000")]
+        [TestCase(13, "2010")]
+        [TestCase(463, "341010")]
+        public void DecimalToFactorialBaseTest(long dec, string expected)
+        {
+            string actual = Dec2Fact.dec2FactString(dec);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
 
     }
 }
