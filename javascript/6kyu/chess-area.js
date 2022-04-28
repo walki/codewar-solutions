@@ -5,14 +5,22 @@ function whiteBlackAreas(cols, rows){
     const colSum = cols.reduce((a,c)=> a += c, 0);
     const totalArea = rowSum * colSum;
 
-    //console.log("total: " + totalArea);
+    const map = new Map();
+
+
     let flip = 0;
     for (let row = 0; row < rows.length; row++){
         let colstart = flip;
-        for(let col = colstart; col < cols.length; col +=2){
-            whiteArea += rows[row]* cols[col];
-
-            //console.log("white: " + whiteArea);
+        let key = `${rows[row]}-${flip}`;
+        if (map.has(key)){
+            whiteArea += map.get(key);
+        }else{
+            let area = 0;
+            for(let col = colstart; col < cols.length; col +=2){
+                area += rows[row]* cols[col];
+                whiteArea += rows[row]* cols[col];
+            }
+            map.set(key, area );
         }
         flip = flip === 0 ? 1 : 0;
     }
