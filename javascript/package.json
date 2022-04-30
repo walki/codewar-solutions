@@ -2,6 +2,7 @@
   "scripts": {
     "test": "jest",
     "test-v": "jest --verbose",
+    "test5": "jest 5kyu",
     "test6": "jest 6kyu",
     "test7": "jest 7kyu"
   },
