@@ -18,8 +18,9 @@ function valueOfX(eq){
 function joinDigits(arr){
     const digits = '0123456789';
     return arr.reduce((acc, cur) => { 
-        if (digits.includes(cur) && acc.count > 0 && digits.includes(acc[acc.length - 1])){
-            acc.push(acc.pop() + cur);
+
+        if (digits.includes(cur) && acc.length > 0 && digits.includes(acc[acc.length - 1])){
+            acc.push(acc.pop() + '' + cur);
             console.log("::" + acc, cur);
         }else{
             acc.push(cur);
@@ -27,7 +28,6 @@ function joinDigits(arr){
         }
         return acc;
     },[]);
-
 }
 
 function processAdd(side){
