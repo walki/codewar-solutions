@@ -132,6 +132,18 @@ namespace codewars_solutions
             Assert.That(actual, Is.EqualTo(expected));
         }
 
+        [Ignore(reason: "Completed 6kyu")]
+        [Test]
+        [TestCase(new int[] { 20 }, 1, new int[] { 20 })]
+        [TestCase(new int[] { 20, 21 }, 1, new int[] { 20, 21 })]
+        [TestCase(new int[] { 21, 20 }, 1, new int[] { 21, 20 })]
+        [TestCase(new int[] { 21, 20, 21 }, 1, new int[] { 21, 20 })]
+        public void DeleteNthTest(int[] arr, int max, int[] expected)
+        {
+            int[] actual = PareDownList.DeleteNth(arr, max);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
 
     }
 }
