@@ -9,7 +9,7 @@ namespace codewars_solutions
         {
         }
 
-        [Ignore(reason:"Completed")]
+        [Ignore(reason: "Completed")]
         [Test]
         [TestCase(0, 0)]
         [TestCase(1, 1)]
@@ -26,12 +26,12 @@ namespace codewars_solutions
 
         [Ignore(reason: "Completed")]
         [Test]
-        [TestCase("12:30 am", new bool[] {false, false, true})]
-        [TestCase("12:02 pm", new bool[] {false, true, false})]
-        [TestCase("01:00 pm", new bool[] {true, false, false})]
-        [TestCase("11:12 am", new bool[] {false, false, true})]
-        [TestCase("05:20 pm", new bool[] {false, false, true})]
-        [TestCase("04:20 am", new bool[] {false, true, false})]
+        [TestCase("12:30 am", new bool[] { false, false, true })]
+        [TestCase("12:02 pm", new bool[] { false, true, false })]
+        [TestCase("01:00 pm", new bool[] { true, false, false })]
+        [TestCase("11:12 am", new bool[] { false, false, true })]
+        [TestCase("05:20 pm", new bool[] { false, false, true })]
+        [TestCase("04:20 am", new bool[] { false, true, false })]
         public void BasicTests(string time, bool[] expected)
         {
             var kata = new MomentInTime();
@@ -106,8 +106,31 @@ namespace codewars_solutions
             Assert.That(actual, Is.EqualTo(expected));
         }
 
+        [Ignore(reason: "Completed 6kyu")]
+        [Test]
+        [TestCase(null, false)]
+        [TestCase(new string[] {}, false)]
+        [TestCase(new string[] {"n"}, false)]
+        [TestCase(new string[] {"n","n","n","n","n","s","s","s","s","s"}, true)]
+        [TestCase(new string[] {"n","n","n","n","n","s","s","s","s","s","n","s"}, false)]
+        public void TenMinuteWalk_MustBe10Min_Test(string [] walk, bool expected)
+        {
+            bool actual = TenMinuteWalk.IsValidWalk(walk);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
 
-
+        [Ignore(reason: "Completed 6kyu")]
+        [Test]
+        [TestCase(new string[] { "n", "n", "n", "n", "n", "s", "s", "s", "s", "e" }, false)]
+        [TestCase(new string[] { "n", "n", "n", "n", "n", "s", "s", "s", "s", "s" }, true)]
+        [TestCase(new string[] { "n", "s", "n", "s", "n", "s", "n", "s", "n", "s" }, true)]
+        [TestCase(new string[] { "n", "s", "w", "e", "n", "s", "w", "e", "n", "s" }, true)]
+        [TestCase(new string[] { "w", "e", "w", "e", "n", "s", "w", "e", "n", "s" }, true)]
+        public void TenMinuteWalk_MustReturnToStart_Test(string[] walk, bool expected)
+        {
+            bool actual = TenMinuteWalk.IsValidWalk(walk);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
 
 
     }
